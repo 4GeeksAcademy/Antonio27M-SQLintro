@@ -81,3 +81,16 @@
 
 --MISSION 10 Muestra el nombre de la región (regions.name) para cada observación.;
 
+--SELECT regions.name FROM regions
+--JOIN Observations ON Observations.id = regions.id;
+
+--MISSION 11 Muestra el nombre científico de cada especie registrada (species.scientific_name).;
+
+--SELECT species.scientific_name FROM species
+--JOIN observations ON observations.id = species.id;
+
+--MISSION 12 ¿Cuál es la especie más observada por cada región?;
+SELECT regions.name, species.scientific_name, count(*) AS contador FROM observations
+JOIN regions ON regions.id = Observations.id
+JOIN Species ON species.id = observations.id
+GROUP BY regions, contador ASC;
