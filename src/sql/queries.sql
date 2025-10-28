@@ -36,13 +36,13 @@ SELECT DISTINCT region_id FROM Observations;
 -- MISSION 3 ¿Cuántas especies distintas (species_id) se han observado?
 -- Your query here;
 
-SELECT DISTINCT count(species_id) FROM Observations;
+SELECT count(DISTINCT species_id) FROM Observations;
 
 -- MISSION 4 ¿Cuántas observaciones hay para la región con region_id = 2?
 -- Your query here;
 
-SELECT count(species_id) FROM observations
-    WHERE species_id = 2;
+SELECT COUNT(*) FROM observations 
+    WHERE region_id = 2;
 
 -- MISSION 5 ¿Cuántas observaciones se registraron el día 1998-08-08?
 -- Your query here;
@@ -53,8 +53,11 @@ SELECT count(observation_date) FROM observations
 -- MISSION 6 ¿Cuál es el region_id con más observaciones?
 -- Your query here;
 
-SELECT count(region_id) FROM observations
-    GROUP BY region_id;
+SELECT region_id, COUNT(*) as total_observaciones 
+FROM observations 
+    GROUP BY region_id 
+    ORDER BY total_observaciones DESC 
+    LIMIT 1;;
 
 
 -- MISSION 7 ¿Cuáles son los 5 species_id más frecuentes?
